@@ -1,0 +1,22 @@
+{
+  "name": "oncoanalyser-deploy",
+  "description": "An example of deploying Oncoanalyser from a CDK NPM package",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "22.0.0",
+    "@types/node": "22.13.9",
+    "aws-cdk": "2.1002.0",
+    "prettier": "3.5.3",
+    "tsx": "4.19.3",
+    "typescript": "5.8.2"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.177.0",
+    "constructs": "10.4.2",
+    "oncoanalyser-aws": "npm:@umccr/oncoanalyser-aws@0.1.0"
+  }
+}
