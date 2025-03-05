@@ -14,8 +14,14 @@ be associated with a mailing list of super users \- as it can be used to initiat
 reset cycle of the super admin user.
 
 Our walkthrough will assume emails
-- user@company.com
-- user+security@company.com
+
+- company+aws.org@gmail.com
+- company+aws.security@gmail.com
+- company+aws.management@gmail.com
+- company+aws.workload@gmail.com
+
+Here we are using the "plus-addressing" feature of `gmail` to create unique emails all associated
+with a single mailing address.
 
 ## Account Setup
 
@@ -43,41 +49,9 @@ Process:
 
 **Documentation of Steps:**
 
-### Create a new AWS account [https://signin.aws.amazon.com/signup?request\_type=register](https://signin.aws.amazon.com/signup?request_type=register)  
+- [Create starting account](create-starting-account.md)
+- [Create organisation](create-organisation.md)
 
-  * Specify a root email and username  
-      ![](image1.png)  
-  * Verify the email address  
-      ![](image2.png)  
-  * Create a password  
-      ![](image3.png)  
-  * Enter contact info  
-      ![](image4.png)  
-  * Enter card details  
-    ![][image5]  
-  * Add phone number  
-    ![][image6]  
-  * Confirm code  
-    ![][image7]  
-  * Complete sign up  
-    ![][image8]  
-  * Click “Go to the AWS Management Console”  
-    ![][image9]  
-* Once in the management console, initially an AWS organization should be set up, with some starting accounts. Once the base accounts are created, they should be used for everything, rather than the root account.  
-* First, go to AWS Organizations in the search bar in the top left  
-  * ![][image10]  
-  * Click “Create an organization” on the right side  
-  * ![][image11]  
-  * Click “Add an AWS account”  
-  * ![][image12]  
-  * Create a “Management” account, with a new email address, and click “Create AWS account”. A new email should be used \- \+ aliases are convenient to send the mail to the same inbox.  
-  * ![][image13]  
-  * Repeat the steps for a “Security” and “Workload” account  
-  * ![][image14]  
-  * ![][image15]  
-  * The organization should now have 4 accounts in total  
-  * ![][image16]  
-* After the accounts are created, go to the “IAM Identity Center” in the search bar to add users that are able to login using SSO. To separate concerns, and avoid using the root account for administrative actions. The management account will be delegated to perform general organizational admin tasks, and the security account will be delegated to perform admin tasks related to security. The workload account will be given permissions to perform tasks like creating applications or pipelines using CDK.
 
 ### 
 
@@ -133,7 +107,7 @@ Create 3 groups to group users
 1. On the left side bar select “Groups”  
 2. Select “Create group”
 
-   ![](image21.png)
+   ![](aws-orgs-list-all.png)
 
 3. Enter the Group name as described in the group name above  
 4. Click on the “Create group” button at the bottom of the page
@@ -147,7 +121,7 @@ Create 3 permission sets so that it could be delegated for each group
 - `SecurityAudit`  
   Repeat the steps below until all permission sets described above are created.  
     
-1. On the left side bar of the service, select the `Permission sets`![](image22.png)  
+1. On the left side bar of the service, select the `Permission sets`![](aws-orgs-start.png)  
 2. Click on the `Create permission set` button  
 3. Follow the wizard prompt to create the permission set  
    1.  Step 1 \- Select permission set type  
@@ -157,7 +131,7 @@ Create 3 permission sets so that it could be delegated for each group
          
 
    2. Step 2 \- Specify permission set details  
-      1. Extend the session duration in the permission set details to 12 hours ![](image23.png)  
+      1. Extend the session duration in the permission set details to 12 hours ![](sign-up-done.png)  
    3. Step 3 \- Review and create  
       1. Click on the “Create” button
 
@@ -186,7 +160,7 @@ Create 3 permission sets so that it could be delegated for each group
 3. Click on “Assign users or groups”  
 4. Select the groups according to the respective account  
 5. Select the Permission sets according to the respective account  
-6. Click “Submit” to apply the configuration![](image24.png)
+6. Click “Submit” to apply the configuration![](iam-permission-set-create.png)
 
 #### Delegate Management account
 
@@ -197,5 +171,5 @@ Delegate the management accounts
 3. Click on “Register account” in the “Delegated administrator” box  
 4. Select the “management” account from the selection list  
 5. Click on the “Register account” at the bottom of the page  
-   ![](image25.png)
+   ![](security-hub-enable.png)
 
