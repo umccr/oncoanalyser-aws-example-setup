@@ -15,8 +15,9 @@
     "typescript": "5.8.2"
   },
   "dependencies": {
-    "aws-cdk-lib": "2.177.0",
+    "aws-cdk-lib": "2.181.1",
     "constructs": "10.4.2",
-    "oncoanalyser-aws": "npm:@umccr/oncoanalyser-aws@0.1.0"
+    "oncoanalyser-aws-dev-version": "npm:@umccr/oncoanalyser-aws@0.1.8",
+    "oncoanalyser-aws-prod-version": "npm:@umccr/oncoanalyser-aws@0.1.8"
   }
 }
